@@ -1,0 +1,43 @@
+/* entire container, keeps perspective */
+.FlipContainer {
+  perspective: 1000px;
+  background-color: transparent;
+}
+/* flip the pane when hovered */
+.FlipContainer:hover .Flipper {
+  transform: rotateY(180deg);
+}
+
+.FlipContainer,
+.Front,
+.Back {
+  width: 100%;
+}
+
+/* flip speed goes here */
+.Flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.Front,
+.Back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.Front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.Back {
+  transform: rotateY(180deg);
+}

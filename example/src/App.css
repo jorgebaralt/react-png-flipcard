@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+}
+
+.App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px 0;
+  transition: all ease 200ms;
+  overflow: hidden;
+}
+
+.App hr {
+  width: 90%;
+}
+
+.App h1:first-of-type {
+  margin-top: 12px !important;
+}
+
+.App svg {
+  font-size: 2.5em;
+}
+
+.DarkTheme {
+  background: rgb(255, 255, 255);
+  color: rgb(16, 10, 52);
+}
+
+.LightTheme {
+  background: rgb(16, 10, 52);
+  color: white;
+}
+
+.ThemeHandler {
+  position: fixed;
+  left: 24px;
+  top: 24px;
+}
+
+.Button {
+  text-transform: uppercase;
+  color: #333;
+  background: #fff;
+  border-color: #333;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  width: fit-content;
+  user-select: none;
+  border: 1px solid;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  width: 100px;
+  padding: 10px 17px;
+  padding: var(--spacing-button-vertical, 10px)
+    var(--spacing-button-horizontal, 17px);
+  box-shadow: 2px 2px 5px 1px #666;
+  transition: background-color 0.1s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out, opacity 0.15s;
+}
+
+.BackLight,
+.FrontLight {
+  color: rgb(16, 10, 52);
+  background-color: white;
+  transition: all ease-in-out 200ms;
+}
+
+.BackDark,
+.FrontDark {
+  transition: all ease-in-out 200ms;
+  background-color: rgb(16, 10, 52);
+  color: white;
+}
