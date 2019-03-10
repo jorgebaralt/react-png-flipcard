@@ -1,21 +1,29 @@
 /* entire container, keeps perspective */
-.FlipContainer {
+.FlipContainerY,
+.FlipContainerX {
   perspective: 1000px;
   background-color: transparent;
 }
+
 /* flip the pane when hovered */
-.FlipContainer:hover .Flipper {
+.FlipContainerY:hover .FlipperY {
   transform: rotateY(180deg);
 }
 
-.FlipContainer,
+.FlipContainerX:hover .FlipperX {
+  transform: rotateX(180deg);
+}
+
+.FlipContainerX,
+.FlipContainerY,
 .Front,
 .Back {
   width: 100%;
 }
 
 /* flip speed goes here */
-.Flipper {
+.FlipperX,
+.FlipperY {
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
@@ -25,19 +33,31 @@
 .Front,
 .Back {
   backface-visibility: hidden;
-
-  position: absolute;
   top: 0;
   left: 0;
 }
 
 /* front pane, placed above back */
-.Front {
+.FrontX {
+  position: relative;
+  z-index: 2;
+  transform: rotateX(0deg);
+}
+
+/* back, initially hidden pane */
+.BackX {
+  transform: rotateX(180deg);
+  position: absolute;
+}
+/* front pane, placed above back */
+.FrontY {
+  position: absolute;
   z-index: 2;
   transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
-.Back {
+.BackY {
+  position: absolute;
   transform: rotateY(180deg);
 }

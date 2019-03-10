@@ -3,9 +3,8 @@ import React, { useState } from 'react'
 import './App.css'
 // JSX
 import FlipCard from 'react-png-flipcard'
-// import Tooltip from 'react-png-tooltip'
-// import SyntaxHighlighter from 'react-syntax-highlighter'
-// import { obsidian as syntaxStyle } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { obsidian as syntaxStyle } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 const example = () => {
   const [theme, setTheme] = useState('light')
@@ -23,15 +22,58 @@ const example = () => {
 
   if (theme === 'light') {
     bodyTheme = 'App LightTheme'
-    backClass = 'BackLight'
-    frontClass = 'FrontLight'
+    backClass = 'BackLight Card'
+    frontClass = 'FrontLight Card'
   }
   if (theme === 'dark') {
     bodyTheme = 'App DarkTheme'
-    backClass = 'BackDark'
-    frontClass = 'FrontDark'
+    backClass = 'BackDark Card'
+    frontClass = 'FrontDark Card'
   }
 
+  const firstCode = `
+  <FlipCard
+  front={
+    <div className='CardContent'>
+      <img
+        src='https://images.unsplash.com/photo-1419407118704-43ccfda4036d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
+        alt='San francisco'
+        className='CardImage'
+      />
+      <h3>San francisco</h3>
+      <div className='HoverInfo'>
+        <p style={{ margin: 5 }}>Hover to learn more</p>
+        <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
+      </div>
+    </div>
+  }
+  back={
+    <div className='CardContent'>
+      <ul style={{ margin: 20 }}>
+        <li>San Francisco, in northern California,</li>
+        <li>
+          is a hilly city on the tip of a peninsula surrounded by the
+          Pacific Ocean and San Francisco Bay
+        </li>
+        <li>
+          It's known for its year-round fog, iconic Golden Gate Bridge,
+          cable cars and colorful Victorian houses.
+        </li>
+        <li>
+          In the bay sits Alcatraz Island, site of the notorious former
+          prison.
+        </li>
+      </ul>
+    </div>
+  }
+  backClass={backClass}
+  frontClass={frontClass}
+  margin={20}
+  width={300}
+  height={300}
+  borderRadius={50}
+/>
+`
   return (
     <div className={bodyTheme}>
       <div className='ThemeHandler'>
@@ -47,16 +89,102 @@ const example = () => {
       </div>
       <br />
       <hr />
-      <div>asd</div>
+      <h2>Horizontal</h2>
       <FlipCard
-        front={<div>FRONT</div>}
-        back={<div>BACK</div>}
+        front={
+          <div className='CardContent'>
+            <img
+              src='https://images.unsplash.com/photo-1419407118704-43ccfda4036d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
+              alt='San francisco'
+              className='CardImage'
+            />
+            <h3>San francisco</h3>
+            <div className='HoverInfo'>
+              <p style={{ margin: 5 }}>Hover to learn more</p>
+              <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
+            </div>
+          </div>
+        }
+        back={
+          <div className='CardContent'>
+            <ul style={{ margin: 15, marginLeft: 5 }}>
+              <li>San Francisco, in northern California,</li>
+              <li>
+                is a hilly city on the tip of a peninsula surrounded by the
+                Pacific Ocean and San Francisco Bay
+              </li>
+              <li>
+                It's known for its year-round fog, iconic Golden Gate Bridge,
+                cable cars and colorful Victorian houses.
+              </li>
+              <li>
+                In the bay sits Alcatraz Island, site of the notorious former
+                prison.
+              </li>
+            </ul>
+          </div>
+        }
         backClass={backClass}
         frontClass={frontClass}
+        margin={20}
         width={300}
         height={300}
         borderRadius={50}
+        direction='horizontal'
       />
+      <br />
+      <hr />
+      <h2>Vertical</h2>
+      <FlipCard
+        front={
+          <div className='CardContent'>
+            <img
+              src='https://images.unsplash.com/photo-1551734044-8cf6396c8639?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
+              alt='New York'
+              className='CardImage'
+            />
+            <h3>New York</h3>
+            <div className='HoverInfo'>
+              <p style={{ margin: 5 }}>Hover to learn more</p>
+              <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
+            </div>
+          </div>
+        }
+        back={
+          <div className='CardContent'>
+            <ul style={{ margin: 15, marginLeft: 5 }}>
+              <li>
+                New York City comprises 5 boroughs sitting where the Hudson
+                River meets the Atlantic Ocean
+              </li>
+              <li>
+                At its core is Manhattan, a densely populated borough that’s
+                among the world’s major commercial, financial and cultural
+                centers
+              </li>
+              <li>
+                Its iconic sites include skyscrapers such as the Empire State
+                Building and sprawling Central Park
+              </li>
+            </ul>
+          </div>
+        }
+        backClass={backClass}
+        frontClass={frontClass}
+        margin={20}
+        width={300}
+        height={300}
+        borderRadius={50}
+        direction='vertical'
+      />
+      <br />
+      <hr />
+      <h2>Code example</h2>
+      <div className='CodeBlock'>
+        <SyntaxHighlighter language='javascript' style={syntaxStyle}>
+          {firstCode}
+        </SyntaxHighlighter>
+      </div>
     </div>
   )
 }

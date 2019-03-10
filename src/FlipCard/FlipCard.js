@@ -5,9 +5,29 @@ import propTypes from 'prop-types'
 receives front and back JSX to render anything
 */
 const FlipCard = (props) => {
+  if (!props.direction) {
+    return null
+  }
+  let flipContainerClass = ''
+  let flipperClass = ''
+  let frontClass = ''
+  let backClass = ''
+  if (props.direction === 'horizontal') {
+    flipContainerClass = classes.FlipContainerY
+    flipperClass = classes.FlipperY
+    frontClass = [classes.Front, classes.FrontY].join(' ')
+    backClass = [classes.Back, classes.BackY].join(' ')
+  }
+  if (props.direction === 'vertical') {
+    flipContainerClass = classes.FlipContainerX
+    flipperClass = classes.FlipperX
+    frontClass = [classes.Front, classes.FrontX].join(' ')
+    backClass = [classes.Back, classes.BackX].join(' ')
+  }
+
   return (
     <div
-      className={[classes.FlipContainer, props.containerClass].join(' ')}
+      className={[flipContainerClass, props.containerClass].join(' ')}
       style={{
         ...props.style,
         width: props.width,
@@ -16,11 +36,11 @@ const FlipCard = (props) => {
       }}
     >
       <div
-        className={classes.Flipper}
+        className={flipperClass}
         style={{ transition: props.flipSpeed ? props.flipSpeed : '600ms' }}
       >
         <div
-          className={[classes.Front, props.frontClass].join(' ')}
+          className={[frontClass, props.frontClass].join(' ')}
           style={{
             height: props.height,
             ...props.frontStyle
@@ -29,7 +49,7 @@ const FlipCard = (props) => {
           {props.front}
         </div>
         <div
-          className={[classes.Back, props.backClass].join(' ')}
+          className={[backClass, props.backClass].join(' ')}
           style={{
             height: props.height,
             ...props.backStyle
@@ -43,6 +63,7 @@ const FlipCard = (props) => {
 }
 
 FlipCard.propTypes = {
+  direction: propTypes.string,
   front: propTypes.any,
   back: propTypes.any,
   style: propTypes.any,

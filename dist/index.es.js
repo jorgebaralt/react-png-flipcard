@@ -28,8 +28,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css = "/* entire container, keeps perspective */\n.FlipCard-module_FlipContainer__1aimw {\n  perspective: 1000px;\n  background-color: transparent;\n}\n/* flip the pane when hovered */\n.FlipCard-module_FlipContainer__1aimw:hover .FlipCard-module_Flipper__DLIcr {\n  transform: rotateY(180deg);\n}\n\n.FlipCard-module_FlipContainer__1aimw,\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  width: 100%;\n}\n\n/* flip speed goes here */\n.FlipCard-module_Flipper__DLIcr {\n  transition: 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* hide back of pane during swap */\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  backface-visibility: hidden;\n\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n/* front pane, placed above back */\n.FlipCard-module_Front__2UuOq {\n  z-index: 2;\n  transform: rotateY(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_Back__1uX_Z {\n  transform: rotateY(180deg);\n}\n";
-var classes = { "FlipContainer": "FlipCard-module_FlipContainer__1aimw", "Flipper": "FlipCard-module_Flipper__DLIcr", "Front": "FlipCard-module_Front__2UuOq", "Back": "FlipCard-module_Back__1uX_Z" };
+var css = "/* entire container, keeps perspective */\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_FlipContainerX__3uH5s {\n  perspective: 1000px;\n  background-color: transparent;\n}\n\n/* flip the pane when hovered */\n.FlipCard-module_FlipContainerY__1pdXA:hover .FlipCard-module_FlipperY__2DYWx {\n  transform: rotateY(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s:hover .FlipCard-module_FlipperX__3W83J {\n  transform: rotateX(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s,\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  width: 100%;\n}\n\n/* flip speed goes here */\n.FlipCard-module_FlipperX__3W83J,\n.FlipCard-module_FlipperY__2DYWx {\n  transition: 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* hide back of pane during swap */\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  backface-visibility: hidden;\n  top: 0;\n  left: 0;\n}\n\n/* front pane, placed above back */\n.FlipCard-module_FrontX__2IOV1 {\n  position: relative;\n  z-index: 2;\n  transform: rotateX(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackX__26JYx {\n  transform: rotateX(180deg);\n  position: absolute;\n}\n/* front pane, placed above back */\n.FlipCard-module_FrontY__JkTjP {\n  position: absolute;\n  z-index: 2;\n  transform: rotateY(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackY__3h5m3 {\n  position: absolute;\n  transform: rotateY(180deg);\n}\n";
+var classes = { "FlipContainerY": "FlipCard-module_FlipContainerY__1pdXA", "FlipContainerX": "FlipCard-module_FlipContainerX__3uH5s", "FlipperY": "FlipCard-module_FlipperY__2DYWx", "FlipperX": "FlipCard-module_FlipperX__3W83J", "Front": "FlipCard-module_Front__2UuOq", "Back": "FlipCard-module_Back__1uX_Z", "FrontX": "FlipCard-module_FrontX__2IOV1", "BackX": "FlipCard-module_BackX__26JYx", "FrontY": "FlipCard-module_FrontY__JkTjP", "BackY": "FlipCard-module_BackY__3h5m3" };
 styleInject(css);
 
 var _extends = Object.assign || function (target) {
@@ -50,10 +50,30 @@ var _extends = Object.assign || function (target) {
 receives front and back JSX to render anything
 */
 var FlipCard = function FlipCard(props) {
+  if (!props.direction) {
+    return null;
+  }
+  var flipContainerClass = '';
+  var flipperClass = '';
+  var frontClass = '';
+  var backClass = '';
+  if (props.direction === 'horizontal') {
+    flipContainerClass = classes.FlipContainerY;
+    flipperClass = classes.FlipperY;
+    frontClass = [classes.Front, classes.FrontY].join(' ');
+    backClass = [classes.Back, classes.BackY].join(' ');
+  }
+  if (props.direction === 'vertical') {
+    flipContainerClass = classes.FlipContainerX;
+    flipperClass = classes.FlipperX;
+    frontClass = [classes.Front, classes.FrontX].join(' ');
+    backClass = [classes.Back, classes.BackX].join(' ');
+  }
+
   return React.createElement(
     'div',
     {
-      className: [classes.FlipContainer, props.containerClass].join(' '),
+      className: [flipContainerClass, props.containerClass].join(' '),
       style: _extends({}, props.style, {
         width: props.width,
         height: props.height,
@@ -63,13 +83,13 @@ var FlipCard = function FlipCard(props) {
     React.createElement(
       'div',
       {
-        className: classes.Flipper,
+        className: flipperClass,
         style: { transition: props.flipSpeed ? props.flipSpeed : '600ms' }
       },
       React.createElement(
         'div',
         {
-          className: [classes.Front, props.frontClass].join(' '),
+          className: [frontClass, props.frontClass].join(' '),
           style: _extends({
             height: props.height
           }, props.frontStyle)
@@ -79,7 +99,7 @@ var FlipCard = function FlipCard(props) {
       React.createElement(
         'div',
         {
-          className: [classes.Back, props.backClass].join(' '),
+          className: [backClass, props.backClass].join(' '),
           style: _extends({
             height: props.height
           }, props.backStyle)
@@ -91,6 +111,7 @@ var FlipCard = function FlipCard(props) {
 };
 
 FlipCard.propTypes = {
+  direction: propTypes.string,
   front: propTypes.any,
   back: propTypes.any,
   style: propTypes.any,
