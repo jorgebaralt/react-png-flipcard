@@ -141,5 +141,22 @@ FlipCard.propTypes = {
   flip: propTypes.bool
 };
 
+FlipCard.defaultProps = {
+  direction: 'horizontal',
+  height: 300,
+  width: 300,
+  front: React.createElement(
+    'div',
+    null,
+    ' Front content here'
+  ),
+  back: React.createElement(
+    'div',
+    null,
+    'Back content here'
+  ),
+  margin: 0
+};
+
 export default FlipCard;
 //# sourceMappingURL=index.es.js.map
