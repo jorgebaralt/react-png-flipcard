@@ -8,6 +8,7 @@ import { obsidian as syntaxStyle } from 'react-syntax-highlighter/dist/esm/style
 
 const example = () => {
   const [theme, setTheme] = useState('light')
+  const [flip, setFlip] = useState('false')
   let bodyTheme = 'App LightTheme'
   let backClass = 'BackLight'
   let frontClass = 'FrontLight'
@@ -33,45 +34,51 @@ const example = () => {
 
   const firstCode = `
   <FlipCard
-  front={
-    <div className='CardContent'>
-      <img
-        src='https://images.unsplash.com/photo-1419407118704-43ccfda4036d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
-        alt='San francisco'
-        className='CardImage'
-      />
-      <h3>San francisco</h3>
-      <div className='HoverInfo'>
-        <p style={{ margin: 5 }}>Hover to learn more</p>
-        <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
-      </div>
-    </div>
-  }
-  back={
-    <div className='CardContent'>
-      <ul style={{ margin: 20 }}>
-        <li>San Francisco, in northern California,</li>
-        <li>
-          is a hilly city on the tip of a peninsula surrounded by the
-          Pacific Ocean and San Francisco Bay
-        </li>
-        <li>
-          It's known for its year-round fog, iconic Golden Gate Bridge,
-          cable cars and colorful Victorian houses.
-        </li>
-        <li>
-          In the bay sits Alcatraz Island, site of the notorious former
-          prison.
-        </li>
-      </ul>
-    </div>
-  }
   backClass={backClass}
   frontClass={frontClass}
   margin={20}
   width={300}
   height={300}
   borderRadius={50}
+  direction='horizontal'
+  manual
+  flip={flip}
+  front={
+    <div className='CardContent'>
+      <img
+        src='https://images.unsplash.com/photo-1501509497947-782640bc1412?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+        alt='Miami'
+        className='CardImage'
+      />
+      <h3>Miami</h3>
+      <div className='HoverInfo' onClick={() => setFlip(true)}>
+        <p style={{ margin: 5 }}>Click to learn more</p>
+        <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
+      </div>
+    </div>
+  }
+  back={
+    <div className='CardContent'>
+      <ul style={{ margin: 15, marginLeft: 5 }}>
+        <li>Miami, officially the City of Miami</li>
+        <li>
+          is the cultural, economic and financial center of South Florida.
+        </li>
+        <li>
+          Miami is the seat of Miami-Dade County, the most populous county
+          in Florida.
+        </li>
+      </ul>
+      <div
+        className='HoverInfo'
+        onClick={() => setFlip(false)}
+        style={{ marginLeft: 15 }}
+      >
+        <p style={{ margin: 5 }}>Go back</p>
+        <i className='fas fa-arrow-left' style={{ marginTop: 7 }} />
+      </div>
+    </div>
+  }
 />
 `
   return (
@@ -176,6 +183,56 @@ const example = () => {
         height={300}
         borderRadius={50}
         direction='vertical'
+      />
+      <br />
+      <hr />
+      <h2>Manual</h2>
+      <FlipCard
+        front={
+          <div className='CardContent'>
+            <img
+              src='https://images.unsplash.com/photo-1501509497947-782640bc1412?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+              alt='Miami'
+              className='CardImage'
+            />
+            <h3>Miami</h3>
+            <div className='HoverInfo' onClick={() => setFlip(true)}>
+              <p style={{ margin: 5 }}>Click here to learn more</p>
+              <i className='fas fa-arrow-right' style={{ marginTop: 7 }} />
+            </div>
+          </div>
+        }
+        back={
+          <div className='CardContent'>
+            <ul style={{ margin: 15, marginLeft: 5 }}>
+              <li>Miami, officially the City of Miami</li>
+              <li>
+                is the cultural, economic and financial center of South Florida.
+              </li>
+              <li>
+                Miami is the seat of Miami-Dade County, the most populous county
+                in Florida.
+              </li>
+            </ul>
+            <div
+              className='HoverInfo'
+              onClick={() => setFlip(false)}
+              style={{ marginLeft: 15 }}
+            >
+              <p style={{ margin: 5 }}>Go back</p>
+              <i className='fas fa-arrow-left' style={{ marginTop: 7 }} />
+            </div>
+          </div>
+        }
+        backClass={backClass}
+        frontClass={frontClass}
+        margin={20}
+        width={300}
+        height={300}
+        borderRadius={50}
+        direction='horizontal'
+        manual
+        flip={flip}
       />
       <br />
       <hr />

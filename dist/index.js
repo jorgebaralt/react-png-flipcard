@@ -32,8 +32,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css = "/* entire container, keeps perspective */\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_FlipContainerX__3uH5s {\n  perspective: 1000px;\n  background-color: transparent;\n}\n\n/* flip the pane when hovered */\n.FlipCard-module_FlipContainerY__1pdXA:hover .FlipCard-module_FlipperY__2DYWx {\n  transform: rotateY(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s:hover .FlipCard-module_FlipperX__3W83J {\n  transform: rotateX(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s,\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  width: 100%;\n}\n\n/* flip speed goes here */\n.FlipCard-module_FlipperX__3W83J,\n.FlipCard-module_FlipperY__2DYWx {\n  transition: 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* hide back of pane during swap */\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  backface-visibility: hidden;\n  top: 0;\n  left: 0;\n}\n\n/* front pane, placed above back */\n.FlipCard-module_FrontX__2IOV1 {\n  position: relative;\n  z-index: 2;\n  transform: rotateX(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackX__26JYx {\n  transform: rotateX(180deg);\n  position: absolute;\n}\n/* front pane, placed above back */\n.FlipCard-module_FrontY__JkTjP {\n  position: absolute;\n  z-index: 2;\n  transform: rotateY(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackY__3h5m3 {\n  position: absolute;\n  transform: rotateY(180deg);\n}\n";
-var classes = { "FlipContainerY": "FlipCard-module_FlipContainerY__1pdXA", "FlipContainerX": "FlipCard-module_FlipContainerX__3uH5s", "FlipperY": "FlipCard-module_FlipperY__2DYWx", "FlipperX": "FlipCard-module_FlipperX__3W83J", "Front": "FlipCard-module_Front__2UuOq", "Back": "FlipCard-module_Back__1uX_Z", "FrontX": "FlipCard-module_FrontX__2IOV1", "BackX": "FlipCard-module_BackX__26JYx", "FrontY": "FlipCard-module_FrontY__JkTjP", "BackY": "FlipCard-module_BackY__3h5m3" };
+var css = "/* entire container, keeps perspective */\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_FlipContainerX__3uH5s {\n  perspective: 1000px;\n  background-color: transparent;\n}\n\n/* flip the pane when hovered */\n.FlipCard-module_FlipContainerY__1pdXA:hover .FlipCard-module_FlipperY__2DYWx {\n  transform: rotateY(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s:hover .FlipCard-module_FlipperX__3W83J {\n  transform: rotateX(180deg);\n}\n\n.FlipCard-module_FlipContainerX__3uH5s,\n.FlipCard-module_FlipContainerY__1pdXA,\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  width: 100%;\n}\n\n/* flip speed goes here */\n.FlipCard-module_FlipperX__3W83J,\n.FlipCard-module_FlipperY__2DYWx {\n  transition: 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* hide back of pane during swap */\n.FlipCard-module_Front__2UuOq,\n.FlipCard-module_Back__1uX_Z {\n  backface-visibility: hidden;\n  top: 0;\n  left: 0;\n}\n\n/* front pane, placed above back */\n.FlipCard-module_FrontX__2IOV1 {\n  position: relative;\n  z-index: 2;\n  transform: rotateX(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackX__26JYx {\n  transform: rotateX(180deg);\n  position: absolute;\n}\n/* front pane, placed above back */\n.FlipCard-module_FrontY__JkTjP {\n  position: absolute;\n  z-index: 2;\n  transform: rotateY(0deg);\n}\n\n/* back, initially hidden pane */\n.FlipCard-module_BackY__3h5m3 {\n  position: absolute;\n  transform: rotateY(180deg);\n}\n\n/* Manual */\n\n.FlipCard-module_FlipperXManual0__3dicb,\n.FlipCard-module_FlipperYManual0__1XhKF {\n  transition: 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* flip the pane when hovered */\n.FlipCard-module_FlipperYManual0__1XhKF {\n  transform: rotateY(0deg);\n}\n\n.FlipCard-module_FlipperXManual0__3dicb {\n  transform: rotateX(0deg);\n}\n\n.FlipCard-module_FlipperYManual180__1-lP6 {\n  transform: rotateY(180deg);\n}\n\n.FlipCard-module_FlipperXManual180__n-_57 {\n  transform: rotateX(180deg);\n}\n";
+var classes = { "FlipContainerY": "FlipCard-module_FlipContainerY__1pdXA", "FlipContainerX": "FlipCard-module_FlipContainerX__3uH5s", "FlipperY": "FlipCard-module_FlipperY__2DYWx", "FlipperX": "FlipCard-module_FlipperX__3W83J", "Front": "FlipCard-module_Front__2UuOq", "Back": "FlipCard-module_Back__1uX_Z", "FrontX": "FlipCard-module_FrontX__2IOV1", "BackX": "FlipCard-module_BackX__26JYx", "FrontY": "FlipCard-module_FrontY__JkTjP", "BackY": "FlipCard-module_BackY__3h5m3", "FlipperXManual0": "FlipCard-module_FlipperXManual0__3dicb", "FlipperYManual0": "FlipCard-module_FlipperYManual0__1XhKF", "FlipperYManual180": "FlipCard-module_FlipperYManual180__1-lP6", "FlipperXManual180": "FlipCard-module_FlipperXManual180__n-_57" };
 styleInject(css);
 
 var _extends = Object.assign || function (target) {
@@ -61,17 +61,30 @@ var FlipCard = function FlipCard(props) {
   var flipperClass = '';
   var frontClass = '';
   var backClass = '';
+
   if (props.direction === 'horizontal') {
     flipContainerClass = classes.FlipContainerY;
-    flipperClass = classes.FlipperY;
+    flipperClass = [classes.FlipperY];
     frontClass = [classes.Front, classes.FrontY].join(' ');
     backClass = [classes.Back, classes.BackY].join(' ');
+    if (props.manual) {
+      flipperClass = [classes.FlipperYManual0];
+      if (props.flip === true) {
+        flipperClass.push(classes.FlipperYManual180);
+      }
+    }
   }
   if (props.direction === 'vertical') {
     flipContainerClass = classes.FlipContainerX;
-    flipperClass = classes.FlipperX;
+    flipperClass = [classes.FlipperX];
     frontClass = [classes.Front, classes.FrontX].join(' ');
     backClass = [classes.Back, classes.BackX].join(' ');
+    if (props.manual) {
+      flipperClass = [classes.FlipperXManual0];
+      if (props.flip === true) {
+        flipperClass.push(classes.FlipperXManual180);
+      }
+    }
   }
 
   return React.createElement(
@@ -87,7 +100,7 @@ var FlipCard = function FlipCard(props) {
     React.createElement(
       'div',
       {
-        className: flipperClass,
+        className: flipperClass.join(' '),
         style: { transition: props.flipSpeed ? props.flipSpeed : '600ms' }
       },
       React.createElement(
@@ -127,7 +140,9 @@ FlipCard.propTypes = {
   flipSpeed: propTypes.number,
   height: propTypes.number,
   width: propTypes.number,
-  margin: propTypes.number
+  margin: propTypes.number,
+  manual: propTypes.bool,
+  flip: propTypes.bool
 };
 
 module.exports = FlipCard;

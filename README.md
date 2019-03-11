@@ -1,81 +1,128 @@
-# Usage
+# Install
 
-In bash CLI:
+Use in bash CLI:
 
-`$    git clone https://github.com/rmolinamir/react-png-component`
+`$ npm install --save react-png-flipcard`
 
-Afterwards, run the following commands in the root folder:
+# Showcase
 
-1. Change the `package.json` name, description, and other properties to the component's respective properties.
-2. `npm install`
-3. That's it!
+[![Edit react-png-flipcard](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/mw23o99wx?fontsize=14)
 
-**To link** the component to the example folder:
+[Example on CodeSandbox](https://mw23o99wx.codesandbox.io/)
 
-1. On the root folder, execute `npm link`.
-2. After it's finished, execute `cd example`, then `npm link [name-of-the-package]`.
+[Website use Example](jorgebaralt.com)
 
-**If anything goes wrong, then delete the `node_modules` folders and the `package-lock.json` files then start over.**
+![](flipcard.gif)
 
-**To run**, execute `npm start` on root and inside the example folder.
+# React Plug-N'-Go Flipcard
 
-**To build**, index.js, execute `npm build` on root folder.
+> Renders a card that provides animation to transition between its front and back JSX. The animation is activated on Hover.
 
-**To publish**, execute `npm publish` on root folder.
-
-# React Plug-N'-Go Component
-
-> Component description
-
-[![NPM](https://img.shields.io/npm/v/[name-of-the-package].svg)](https://www.npmjs.com/package/[name-of-the-package]) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
-
-```bash
-npm install --save [name-of-the-package]
-```
-
-## Showcase
-
-...
+[![NPM](https://img.shields.io/npm/v/react-png-flipcard.svg)](https://www.npmjs.com/package/react-png-flipcard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Instructions
 
-1. ...
+1. literally, just plug and go.
+2. import FlipCard from "react-png-flipcard";
+3. declare the component and pass the required props (front, back, direction, height, width) look below for more details.
+4. style front and back as you wish using the frontClass and backClass props.
 
 ## Features
 
-1. ...
+1. Nice animation transition between front and back of the card.
 
 ## Props
 
-Props               |       Functionality
--------------       |       -------------
-`prop`              |       ...
+| Props            | Functionality                                                                                                      | Default               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| `front`          | _REQUIRED_ this props receive JSX to be rendered on the front of the card. Look down for examples on how to do it. | <div>Front here</div> |
+| `back`           | _REQUIRED_ this props receive JSX to be rendered on the back of the card. Look down for examples on how to do it.  | <div>back here</div>  |
+| `width`          | _REQUIRED_ Width of the card                                                                                       | 100%                  |
+| `height`         | _REQUIRED_ height of the card                                                                                      | 250 ms                |
+| `direction`      | _REQUIRED_ flip direction                                                                                          | "horizontal"          |
+| `flipSpeed`      | Speef of flip animation, in ms                                                                                     | 600ms                 |
+| `style`          | style object to customize the card                                                                                 | NA                    |
+| `containerClass` | CSS class to style the card                                                                                        | NA                    |
+| `manual`         | Boolean that set animation to be on action (for example on click) this is good to be managed by a state            | NA                    |
+| `flip`           | Boolean state that keeps track of wether card is flipped or not                                                    | False                 |
+| `frontStyle`     | style object to customize the front of the card                                                                    | NA                    |
+| `backStyle`      | style object to customize the back of the card                                                                     | NA                    |
+| `frontClass`     | CSS class to style the front of the card                                                                           | NA                    |
+| `backClass`      | CSS class to style the back of the card                                                                            | NA                    |
+| `margin`         | Number to set margin                                                                                               | NA                    |
 
 ## Usage
 
-[![Edit React Plug-N'-Go Component](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/)
+### For React.js version ^16.8
+
+#### Uses React Hooks
 
 ```jsx
-import React, { Component } from 'react'
+import FlipCard from 'react-png-flipcard';
+```
 
-import Component from '[name-of-the-package]'
+### For React.js version ^15.0.0
 
-const component = () => {
-    return (
-    <Component>
-      React Plug-N'-Go Component.
-    </Component>
-  )
-}
+#### Uses React Classes to handle state
+
+Pending...
+
+### Example
+
+```jsx
+<FlipCard
+  front={
+    <div className="CardContent">
+      <img
+        src="https://images.unsplash.com/photo-1501509497947-782640bc1412?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+        alt="Miami"
+        className="CardImage"
+      />
+      <h3>Miami</h3>
+      <div className="HoverInfo" onClick={() => setFlip(true)}>
+        <p style={{ margin: 5 }}>Click here to learn more</p>
+        <i className="fas fa-arrow-right" style={{ marginTop: 7 }} />
+      </div>
+    </div>
+  }
+  back={
+    <div className="CardContent">
+      <ul style={{ margin: 15, marginLeft: 5 }}>
+        <li>Miami, officially the City of Miami</li>
+        <li>
+          is the cultural, economic and financial center of South Florida.
+        </li>
+        <li>
+          Miami is the seat of Miami-Dade County, the most populous county in
+          Florida.
+        </li>
+      </ul>
+      <div
+        className="HoverInfo"
+        onClick={() => setFlip(false)}
+        style={{ marginLeft: 15 }}
+      >
+        <p style={{ margin: 5 }}>Go back</p>
+        <i className="fas fa-arrow-left" style={{ marginTop: 7 }} />
+      </div>
+    </div>
+  }
+  backClass={backClass}
+  frontClass={frontClass}
+  margin={20}
+  width={300}
+  height={300}
+  borderRadius={50}
+  direction="horizontal"
+  manual
+  flip={flip}
+/>
 ```
 
 ## Pending
 
-- ...
+- Support for react older versions
 
 ## License
 
-MIT © [author](https://github.com/author)
-# react-png-flipcard
+MIT © [jorgebaralt](https://github.com/jorgebaralt)

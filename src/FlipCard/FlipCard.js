@@ -12,17 +12,30 @@ const FlipCard = (props) => {
   let flipperClass = ''
   let frontClass = ''
   let backClass = ''
+
   if (props.direction === 'horizontal') {
     flipContainerClass = classes.FlipContainerY
-    flipperClass = classes.FlipperY
+    flipperClass = [classes.FlipperY]
     frontClass = [classes.Front, classes.FrontY].join(' ')
     backClass = [classes.Back, classes.BackY].join(' ')
+    if (props.manual) {
+      flipperClass = [classes.FlipperYManual0]
+      if (props.flip === true) {
+        flipperClass.push(classes.FlipperYManual180)
+      }
+    }
   }
   if (props.direction === 'vertical') {
     flipContainerClass = classes.FlipContainerX
-    flipperClass = classes.FlipperX
+    flipperClass = [classes.FlipperX]
     frontClass = [classes.Front, classes.FrontX].join(' ')
     backClass = [classes.Back, classes.BackX].join(' ')
+    if (props.manual) {
+      flipperClass = [classes.FlipperXManual0]
+      if (props.flip === true) {
+        flipperClass.push(classes.FlipperXManual180)
+      }
+    }
   }
 
   return (
@@ -36,7 +49,7 @@ const FlipCard = (props) => {
       }}
     >
       <div
-        className={flipperClass}
+        className={flipperClass.join(' ')}
         style={{ transition: props.flipSpeed ? props.flipSpeed : '600ms' }}
       >
         <div
@@ -75,7 +88,18 @@ FlipCard.propTypes = {
   flipSpeed: propTypes.number,
   height: propTypes.number,
   width: propTypes.number,
-  margin: propTypes.number
+  margin: propTypes.number,
+  manual: propTypes.bool,
+  flip: propTypes.bool
+}
+
+FlipCard.defaultProps = {
+  direction: 'horizontal',
+  height: 300,
+  width: 300,
+  front: <div> Front content here</div>,
+  back: <div>Back content here</div>,
+  margin: 0
 }
 
 export default FlipCard
