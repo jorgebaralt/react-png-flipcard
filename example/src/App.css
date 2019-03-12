@@ -101,10 +101,10 @@ body {
   tab-size: 4;
   hyphens: none;
   padding: 1em;
-  margin: 0.5em 0px;
   overflow: auto;
   border-radius: 0.3em;
   background: rgb(40, 44, 52);
+  width: 80%;
   max-width: 840px;
 }
 
