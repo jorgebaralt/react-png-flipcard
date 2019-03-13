@@ -10,7 +10,7 @@ Use in bash CLI:
 
 [Example on CodeSandbox](https://mw23o99wx.codesandbox.io/)
 
-[Website use Example](jorgebaralt.com)
+[Website use Example](https://jorgebaralt.com)
 
 ![](flipcard.gif)
 
