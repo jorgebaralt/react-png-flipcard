@@ -33,23 +33,23 @@ Use in bash CLI:
 
 ## Props
 
-| Props            | Functionality                                                                                                        | Default               | Data Type   |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| `front`          | _REQUIRED_ - this props receive JSX to be rendered on the front of the card. Look down for examples on how to do it. | <div>Front here</div> | JSX         |
-| `back`           | _REQUIRED_ - this props receive JSX to be rendered on the back of the card. Look down for examples on how to do it.  | <div>back here</div>  | JSX         |
-| `width`          | _REQUIRED_ - Width of the card                                                                                       | 100%                  | number      |
-| `height`         | _REQUIRED_ - height of the card                                                                                      | 250 ms                | number      |
-| `direction`      | _REQUIRED_ - flip direction                                                                                          | "horizontal"          | string      |
-| `flipSpeed`      | Speef of flip animation, in ms                                                                                       | 600ms                 | number (ms) |
-| `style`          | style object to customize the card                                                                                   | NA                    | object      |
-| `containerClass` | CSS class to style the card                                                                                          | NA                    | css class   |
-| `manual`         | Boolean that set animation to be on action (for example on click) this is good to be managed by a state              | NA                    | boolean     |
-| `flip`           | Boolean state that keeps track of wether card is flipped or not                                                      | False                 | boolean     |
-| `frontStyle`     | style object to customize the front of the card                                                                      | NA                    | object      |
-| `backStyle`      | style object to customize the back of the card                                                                       | NA                    | object      |
-| `frontClass`     | CSS class to style the front of the card                                                                             | NA                    | css class   |
-| `backClass`      | CSS class to style the back of the card                                                                              | NA                    | css class   |
-| `margin`         | Number to set margin                                                                                                 | NA                    | number      |
+| Props            | Functionality                                                                                           | Default               | Data Type   |
+| ---------------- | ------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
+| `front`          | this props receive JSX to be rendered on the front of the card. Look down for examples on how to do it. | <div>Front here</div> | JSX         |
+| `back`           | this props receive JSX to be rendered on the back of the card. Look down for examples on how to do it.  | <div>back here</div>  | JSX         |
+| `width`          | Width of the card                                                                                       | 300                   | number      |
+| `height`         | height of the card                                                                                      | 300                   | number      |
+| `direction`      | flip direction                                                                                          | "horizontal"          | string      |
+| `flipSpeed`      | Speef of flip animation, in ms                                                                          | 600ms                 | number (ms) |
+| `style`          | style object to customize the card                                                                      | NA                    | object      |
+| `containerClass` | CSS class to style the card                                                                             | NA                    | css class   |
+| `manual`         | Boolean that set animation to be on action (for example on click) this is good to be managed by a state | NA                    | boolean     |
+| `flip`           | Boolean state that keeps track of wether card is flipped or not                                         | False                 | boolean     |
+| `frontStyle`     | style object to customize the front of the card                                                         | NA                    | object      |
+| `backStyle`      | style object to customize the back of the card                                                          | NA                    | object      |
+| `frontClass`     | CSS class to style the front of the card                                                                | NA                    | css class   |
+| `backClass`      | CSS class to style the back of the card                                                                 | NA                    | css class   |
+| `margin`         | Number to set margin                                                                                    | NA                    | number      |
 
 ## Usage
 
